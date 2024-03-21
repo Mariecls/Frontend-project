@@ -12,9 +12,8 @@ document.getElementById('rangeForm').addEventListener('submit', function (event)
             return response.json();
         })
         .then(data => {
-
             if (data.hasOwnProperty('years') && Array.isArray(data.years)) {
-                rangeResult.innerText = data.years.join(', ');
+                rangeResult.innerText = "Les années bissextiles entre " + startYear + " et " + endYear + " sont : " + data.years.join(', ');
             } else {
                 throw new Error('Les données reçues ne sont pas au format attendu.');
             }
