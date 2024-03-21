@@ -12,7 +12,7 @@ document.getElementById('rangeForm').addEventListener('submit', function (event)
             return response.json();
         })
         .then(data => {
-            // Vérifiez si la clé years existe dans la réponse
+
             if (data.hasOwnProperty('years') && Array.isArray(data.years)) {
                 rangeResult.innerText = data.years.join(', ');
             } else {
