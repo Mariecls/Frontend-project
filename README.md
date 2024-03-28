@@ -4,7 +4,7 @@ Ce projet est le front d'une API ,c'est une application web pour vérifier si un
 
   
 ## Installation
-Pour cloner le front depuis GITHUB il faut utiliser  ``` pip install git+https://github.com/Mariecls/Frontend-project.git ```
+Pour cloner le front depuis GITHUB il faut utiliser  ``` git clone https://github.com/Mariecls/Frontend-project.git ```
 
 
 ## Usage
