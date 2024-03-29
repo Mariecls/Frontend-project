@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const yearInput = document.getElementById('yearInput');
         const year = parseInt(yearInput.value);
         const resultDiv = document.getElementById('result');
+        const nextLeapYearDiv = document.getElementById('prochaineBissextile');
 
         if (!yearInput.value.trim()) {
             resultDiv.innerText = "Veuillez entrer une année.";
@@ -26,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .then(data => {
                     resultDiv.innerText = "L'année " + year + (data.isLeapYear ? " est" : " n'est pas") + " bissextile.";
+                    const nextLeapYear = prochaineAnneeBissextile(year);
+                    nextLeapYearDiv.innerText = "La prochaine année bissextile après " + year + " est : " + nextLeapYear;
                 })
                 .catch(error => {
                     resultDiv.innerText = 'Une erreur est survenue : ' + error.message;
@@ -39,6 +42,18 @@ document.addEventListener('DOMContentLoaded', function () {
 function isValidYear(year) {
     return /^\d{4}$/.test(year);
 }
+
+function prochaineAnneeBissextile(apresAnnee) {
+    let annee = apresAnnee + 1;
+
+    while (true) {
+        if ((annee % 4 === 0 && annee % 100 !== 0) || annee % 400 === 0) {
+            return annee;
+        }
+        annee++;
+    }
+}
+
 
 /*
 .then(data => {
