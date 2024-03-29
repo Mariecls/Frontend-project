@@ -8,9 +8,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!yearInput.value.trim()) {
             resultDiv.innerText = "Veuillez entrer une année.";
+        } else if (isNaN(year) || year.toString().length !== 4) {
+            resultDiv.innerText = "Veuillez entrer une année valide de quatre chiffres.";
         } else {
-
-            const test = fetch('http://127.0.0.1:8000/is_leap_year/2023', {
+            fetch('http://127.0.0.1:8000/is_leap_year/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -18,15 +19,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: JSON.stringify({ year: year })
             })
                 .then(response => {
-                    console.log(response)
-
                     if (!response.ok) {
                         throw new Error('La requête a échoué.');
                     }
                     return response.json();
-
                 })
-
+                .then(data => {
+                    if (data.is_leap_year) {
+                        resultDiv.innerText = year + " est une année bissextile.";
+                    } else {
+                        resultDiv.innerText = year + " n'est pas une année bissextile.";
+                    }
+                })
                 .catch(error => {
                     resultDiv.innerText = 'Une erreur est survenue : ' + error.message;
                 });
@@ -35,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         yearInput.value = '';
     });
 });
+
 /*
 .then(data => {
                     if (data.is_leap_year) {
@@ -44,3 +49,4 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 })
                 */
+
