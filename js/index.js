@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!yearInput.value.trim()) {
             resultDiv.innerText = "Veuillez entrer une année.";
-        } else if (isNaN(year) || year.toString().length !== 4) {
-            resultDiv.innerText = "Veuillez entrer une année valide de quatre chiffres.";
+        } else if (!isValidYear(yearInput.value)) {
+            resultDiv.innerText = "Veuillez entrer une année valide (4 chiffres).";
         } else {
             fetch('http://127.0.0.1:8000/is_leap_year/', {
                 method: 'POST',
@@ -25,11 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return response.json();
                 })
                 .then(data => {
-                    if (data.is_leap_year) {
-                        resultDiv.innerText = year + " est une année bissextile.";
-                    } else {
-                        resultDiv.innerText = year + " n'est pas une année bissextile.";
-                    }
+                    resultDiv.innerText = "L'année " + year + (data.isLeapYear ? " est" : " n'est pas") + " bissextile.";
                 })
                 .catch(error => {
                     resultDiv.innerText = 'Une erreur est survenue : ' + error.message;
@@ -39,6 +35,10 @@ document.addEventListener('DOMContentLoaded', function () {
         yearInput.value = '';
     });
 });
+
+function isValidYear(year) {
+    return /^\d{4}$/.test(year);
+}
 
 /*
 .then(data => {

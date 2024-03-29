@@ -4,8 +4,12 @@ document.getElementById('rangeForm').addEventListener('submit', function (event)
     const endYear = document.getElementById('endYearInput').value;
     const rangeResult = document.getElementById('rangeResult');
 
-    if (!startYear.trim() || !endYear.trim()) {
-        rangeResult.innerText = "Veuillez entrer une année de début et une année de fin.";
+    const isValidYear = (year) => /^\d{4}$/.test(year);
+
+    if (!isValidYear(startYear) || !isValidYear(endYear)) {
+        rangeResult.innerText = "Veuillez entrer une année de début et une année de fin valides (4 chiffres).";
+    } else if (parseInt(startYear) >= parseInt(endYear)) {
+        rangeResult.innerText = "L'année de début doit être inférieure à l'année de fin.";
     } else {
         fetch('http://127.0.0.1:8000/leap_years_in_range/', {
             method: 'POST',

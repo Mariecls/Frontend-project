@@ -4,26 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plage d'années</title>
+    <title>Accueil</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <h1>Plage d'années</h1>
-    <form id="rangeForm">
-        <label for="startYearInput">Année de début :</label>
-        <input type="number" id="startYearInput" name="startYear">
+    <h1>Page d'accueil</h1>
+    <form id="yearForm">
+        <label for="yearInput">Année :</label>
+        <input type="text" id="yearInput" name="year" maxlength="4">
         <label for="endYearInput">Année de fin :</label>
-        <input type="number" id="endYearInput" name="endYear">
-        <button type="submit">Vérifier</button>
+        <input type="text" id="endYearInput" name="endYear" maxlength="4">
+        <button id="checkButton">Vérifier</button>
     </form>
-    <div id="rangeResult"></div>
+    <div id="result"></div>
 
-    <a href="history.html"><button>Historique</button></a>
-    <a href="index.html"><button>Accueil</button></a>
+    <button onclick="window.location.href='history.html'">Historique</button>
+    <button onclick="window.location.href='range.html'">Plage d'années</button>
 
-
-    <script src="../js/range.js"></script>
+    <script src="../js/index.js"></script>
 </body>
 
 </html>

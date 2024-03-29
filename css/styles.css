@@ -16,53 +16,17 @@ button {
     color: #fff;
     border: none;
     border-radius: 5px;
-    margin: 10px;
+    margin: 10px auto;
     cursor: pointer;
+    display: block;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-#historyResult {
-    background-color: #fff;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-#yearForm {
-    text-align: center;
-}
-
-#yearInput {
-    margin-right: 10px;
-}
-
-#result {
-    background-color: #fff;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#rangeForm {
-    text-align: center;
-}
-
-#startYearInput,
-#endYearInput {
-    margin-right: 10px;
-}
-
+#historyResult,
+#result,
 #rangeResult {
     background-color: #fff;
     padding: 20px;
@@ -70,4 +34,17 @@ button:hover {
     max-width: 600px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#yearForm,
+#rangeForm {
+    text-align: center;
+}
+
+#yearForm label,
+#yearForm input,
+#yearForm button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
 }
